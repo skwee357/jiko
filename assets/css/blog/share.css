@@ -1,0 +1,55 @@
+.share {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin: 0 auto;
+}
+
+.share-title {
+}
+
+.share-item {
+    border-radius: 3px;
+    font-size: 16px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    width: 28px;
+}
+
+.share-item + .share-item {
+    margin-left: 8px;
+}
+
+.share-item > .share-icon {
+    color: #fff;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+}
+
+.share-facebook {
+    background-color: #1877F2;
+}
+
+.share-twitter {
+    background-color: #1DA1F2;
+}
+
+.share-linkedin {
+    background-color: #0077b5;
+}
+
+.share-reddit {
+    background-color: #FF4500;
+}
+
+.share-pocket {
+    background-color: #EF3F56;
+}
+
+.share-ycombinator {
+    background-color: #F0652F;
+}
+

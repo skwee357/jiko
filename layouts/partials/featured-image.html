@@ -1,0 +1,41 @@
+{{ with ($.Param "featured_image") }}
+    {{ $parts := split . "#" }}
+    {{ $destination := index $parts 0 }}
+    {{ $class := index $parts 1 }}
+
+    {{ $src := $.Page.Resources.GetMatch $destination }}
+
+    {{ if $src }}
+    	{{ $tinyw := default "200x webp" }}
+		{{ $smallw := default "300x webp" }}
+		{{ $mediumw := default "600x webp" }}
+		{{ $largew := default "1200x webp" }}
+
+    	{{ $data := newScratch }}
+    	{{ $data.Set "tiny" ($src.Resize $tinyw) }}
+    	{{ $data.Set "small" ($src.Resize $smallw) }}
+    	{{ $data.Set "medium" ($src.Resize $mediumw) }}
+    	{{ $data.Set "large" ($src.Resize $largew) }}
+
+
+    	{{ $tiny := $data.Get "tiny" }}
+    	{{ $small := $data.Get "small" }}
+    	{{ $medium := $data.Get "medium" }}
+    	{{ $large := $data.Get "large" }}
+
+    	<figure class="single-media kg-width-wide">
+    		<a href="{{ $src.RelPermalink }}">
+    		    <picture>
+    			    <source media="(max-width: 376px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+    			    <source media="(max-width: 992px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+    			    <source media="(max-width: 1400px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+    			    <source media="(min-width: 1600px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+    			    <img {{ with ($.Param "featured_image_alt") }}alt="{{ . | safeHTML }}"{{ end }} src="{{ $src }}" height="{{ $src.Height}}" width="{{ $src.Width }}" {{ with $class }}class="{{ . }}"{{ end }}>
+    			</picture>
+    		</a>
+    		{{ with ($.Param "featured_image_caption") }}
+    			<figcaption>{{ . | safeHTML | markdownify }}</figcaption>
+    		{{ end }}
+    	</figure>
+    {{ end }}
+{{ end }}

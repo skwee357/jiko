@@ -1,0 +1,19 @@
+.footnotes {
+	margin-top: 0;
+}
+
+.footnotes hr {
+	display: none;
+}
+
+.footnotes ol {
+	font-size: 13px;
+}
+
+.footnotes ol li {
+	margin-top: 0 !important;
+}
+
+.footnotes p {
+	margin: 0 0 1rem;
+}

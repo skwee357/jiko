@@ -1,0 +1,20 @@
+<article class="feed post">
+    <div class="feed-wrapper">
+        <h2 class="feed-title">{{ .Title }}</h2>
+        {{ with .Summary }}
+            <div class="feed-excerpt">{{ . | plainify | safeHTML }}</div>
+        {{ end }}
+        <div class="feed-right">
+            <time class="feed-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "Jan 2, 2006" }}
+            </time>
+            <div class="feed-length">
+                {{.ReadingTime}} min read
+            </div>
+        </div>
+    </div>
+    <svg class="icon feed-icon">
+        <use xlink:href="#chevron-right"></use>
+    </svg>
+    <a class="u-permalink" href="{{ .Permalink }}" aria-label="{{ .Title }}"></a>
+</article>

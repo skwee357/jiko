@@ -1,0 +1,21 @@
+{{ define "body_class" }}tag-template{{ end }}
+
+{{ define "main" }}
+	<div class="content-area">
+	    <main class="site-main">
+            <section class="tag">
+                <div class="container medium">
+                    <h1 class="tag-name">{{ .Title }}</h1>
+                </div>
+            </section>
+
+	        <div class="post-feed expanded container medium">
+	            {{ range .Paginator.Pages }}
+		        	{{ partial "post-summary.html" . }}
+		        {{ end }}
+	        </div>
+	        
+	        {{ partial "pagination.html" . }}
+	    </main>
+	</div>
+{{ end }}

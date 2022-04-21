@@ -1,0 +1,22 @@
+{{ define "body_class" }}home-template{{ end }}
+
+{{ define "main" }}
+	<div class="content-area">
+		<main class="site-main">
+	    	<header class="feed-header container medium">
+	            <div class="feed-header-wrapper">
+	                <h2 class="feed-header-title">Latest Posts</h2>
+	            </div>
+	        </header>
+
+	        <div class="post-feed expanded container medium">
+	        	{{ $paginator := .Paginate ( where .Site.RegularPages "Type" "post" ) }}
+	        	{{ range $paginator.Pages }}
+		        	{{ partial "post-summary.html" . }}
+		        {{ end }}
+	        </div>
+
+	        {{ partial "pagination.html" . }}
+	    </main>
+	</div>
+{{ end }}

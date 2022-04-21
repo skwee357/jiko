@@ -1,0 +1,108 @@
+<article class="post single-post">
+    <header class="single-header kg-canvas">
+        {{ if eq .Section "post" }}
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="{{ .Date.Format "2006-01-2" }}">
+                        {{ .Date.Format "Jan 2, 2006" }}
+                    </time>
+                </span>
+                <span class="single-meta-item single-meta-length">
+                    {{.ReadingTime}} min read
+                </span>
+                {{ if .Params.tags }}
+                    {{ range .Params.tags }}
+                        <span class="single-meta-item single-meta-tag">
+                            <a class="post-tag" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+                        </span>
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+
+        <h1 class="single-title">{{ .Title }}</h1>
+
+        {{ partial "i18nlist" . }}
+
+        {{ partial "featured-image" . }}
+    </header>
+
+    <div class="single-content kg-canvas u-text-format">
+        {{ .Content }}
+    </div>
+
+    {{ if eq .Section "post" }}
+        <footer class="single-footer container small">
+            {{ partial "share" . }}
+
+            <section class="published-by">
+                <h4 class="single-footer-title">Published by</h4>
+
+                <div class="author">
+                    <div class="author-image-placeholder u-placeholder">
+                        {{ $image := resources.Get .Site.Params.About.cover }}
+                        {{ $img := $image.Resize "200x webp" }}
+
+                        <a href="/about-me" alt="About {{ .Site.Params.author }}">
+                            <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ .Site.Params.author }}">
+                        </a>
+                    </div>
+
+                    <div class="author-wrapper">
+                        <header class="author-header">
+                            <h4 class="author-name">
+                                <a href="/about-me" alt="About {{ .Site.Params.author }}">
+                                    {{ .Site.Params.author }}
+                                </a>
+                            </h4>
+
+                            <h5 class="author-title">
+                                {{ $.Param "about.title" }}
+                            </h5>
+                        </header>
+
+                        <div class="author-bio">
+                            {{ partial "author-bio" ($.Param "about.bio")}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {{ partial "post-footer" . }}
+        </footer>
+
+        <nav class="navigation container medium">
+            {{ with .PrevInSection }}
+                <div class="navigation-item navigation-previous">
+                    <a class="navigation-item-link" href="{{ .Permalink }}" aria-label="Previous post">
+                        <span class="navigation-label">
+                            <svg class="icon navigation-icon">
+                                <use xlink:href="#arrow-left"></use>
+                            </svg>
+                            Previous Post
+                        </span>
+                        <h4 class="navigation-title">
+                            {{ .Title }}
+                        </h4>
+                    </a>
+                </div>
+            {{ end }}
+
+            {{ with .NextInSection }}
+                <div class="navigation-item navigation-next">
+                    <a class="navigation-item-link" href="{{ .Permalink }}" aria-label="Next post">
+                        <span class="navigation-label">
+                            Next Post
+                            <svg class="icon navigation-icon">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </span>
+                        <h4 class="navigation-title">
+                            {{ .Title }}
+                        </h4>
+                    </a>
+                </div>
+            {{ end }}
+        </nav>
+    {{ end }}
+</article>

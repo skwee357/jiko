@@ -1,0 +1,12 @@
+{{ $currentPage := . }}
+{{ range .Site.Menus.main.ByWeight }}
+    <a class="menu-item {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} menu-item-current{{end}}{{ with .Params.class }}{{ . }}{{ end }}" href="{{ .URL }}">
+        {{ with .Pre }}
+            {{ $icon := printf "icons/%s.html" . }}
+            <svg class="navigation-icon">
+                {{ partial $icon }}
+            </svg>
+        {{ end }}
+        {{ .Name }}
+    </a>
+{{ end }}

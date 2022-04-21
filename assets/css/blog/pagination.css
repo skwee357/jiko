@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-prev {
+}
+
+.page-next {
+    margin-left: auto;
+}
+
+.page-prev, .page-next {
+    margin-top: 4.5rem;
+}
+
+@keyframes scaleOut {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}

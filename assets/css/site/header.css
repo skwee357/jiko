@@ -1,0 +1,95 @@
+.site-header {
+    display: flex;
+    align-items: center;
+    height: var(--navbar-height);
+}
+
+.header-left,
+.header-right {
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    justify-content: flex-end;
+}
+
+.header-right .menu-item {
+    margin: 0;
+}
+
+.header-right .menu-item + .menu-item {
+    margin-left: 2rem;
+}
+
+.logo {
+    position: relative;
+}
+
+.logo-text {
+    color: var(--secondary-text-color);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.logo-image {
+    max-height: 50px;
+}
+
+.logo-image.white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item {
+    margin: 0 1.5rem;
+    font-weight: 700;
+}
+
+.menu-item[href*="..."],
+.menu-item[href*="..."] ~ .menu-item {
+    display: none;
+}
+
+.mobile-menu {
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    z-index: 90;
+    display: none;
+    padding-top: 3rem;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--white-color);
+}
+
+.mobile-menu .menu-item {
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: right;
+}
+
+.mobile-menu .menu-item + .menu-item {
+    margin-top: 1.5rem;
+}
+
+.mobile-menu .menu-item[href*="..."] ~ .menu-item {
+    display: inline;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-opened .mobile-menu {
+    display: block;
+}

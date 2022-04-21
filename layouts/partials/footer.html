@@ -1,0 +1,39 @@
+<footer class="site-footer container">
+    <div class="copyright">
+        <div>
+            {{ .Site.Params.copyright }}
+        </div>
+
+        <div>
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>
+        </div>
+
+        <div>
+           <a href="https://github.com/skwee357/jiko" target="_blank" rel="noopener noreferrer">Jiko</a> Theme
+       </div>
+    </div>
+
+    <nav class="footer-nav">
+        {{- with $.OutputFormats.Get "RSS" -}}
+        <a class="menu-item rss-feed" href="{{ .Permalink | safeURL }}" target="_blank" rel="noopener noreferrer" aria-label="RSS">
+            <svg class="rss-icon">
+                {{ partial "icons/rss.html" }}
+            </svg>
+            <span class="rss-text">RSS Feed</span>
+        </a>
+        {{- end -}}
+
+        <a id="js-theme" class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme">
+            <svg class="icon theme-icon theme-icon-system">
+                <use xlink:href="#circle-half-full"></use>
+            </svg>
+            <svg class="icon theme-icon theme-icon-dark">
+                <use xlink:href="#brightness-2"></use>
+            </svg>
+            <svg class="icon theme-icon theme-icon-light">
+                <use xlink:href="#white-balance-sunny"></use>
+            </svg>
+            <span class="theme-text">System theme</span>
+        </a>
+    </nav>
+</footer>

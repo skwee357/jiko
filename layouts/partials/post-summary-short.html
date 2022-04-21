@@ -1,0 +1,17 @@
+<article class="feed post">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            {{ .Date.Format "Jan" }}
+        </div>
+        <div class="feed-calendar-day">
+            {{ .Date.Format "2" }}
+        </div>
+    </div>
+    <h2 class="feed-title">{{ .Title }}</h2>
+    <div class="feed-right">
+        <div class="feed-length">
+            {{ .ReadingTime }} min read
+        </div>
+    </div>
+    <a class="u-permalink" href="{{ .Permalink }}" aria-label="{{ .Title }}"></a>
+</article>

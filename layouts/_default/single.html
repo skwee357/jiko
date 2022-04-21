@@ -1,0 +1,10 @@
+{{ define "body_class" }}page-template{{ end }}
+
+{{ define "main" }}
+	<div class="content-area">
+	    <main class="site-main">
+	    	{{ partial "post.html" . }}
+	    	{{ partial "related.html" . }}
+	    </main>
+	</div>
+{{ end }}

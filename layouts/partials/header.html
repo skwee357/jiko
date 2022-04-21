@@ -1,0 +1,36 @@
+<header class="site-header container">
+    <div class="header-left">
+        <a class="logo" href="{{ .Site.BaseURL }}">
+            <span class="logo-text">{{ .Site.Title }}</span>
+        </a>
+    </div>
+
+    {{ if .Site.Menus.main }}
+        <nav class="main-nav hidden-xs hidden-sm hidden-md">
+            {{ partial "navigation.html" . }}
+            <!-- <button class="button-icon menu-item-button js-modal" data-modal="search" aria-label="Search">
+                <svg class="icon">
+                    <use xlink:href="#magnify"></use>
+                </svg>
+            </button> -->
+        </nav>
+
+        <!-- <button class="button-icon hidden-lg hidden-xl js-modal" data-modal="search" aria-label="Search">
+            <svg class="icon">
+                <use xlink:href="#magnify"></use>
+            </svg>
+        </button> -->
+        <div id="burger" class="burger hidden-lg hidden-xl">
+            <div class="burger-bar"></div>
+            <div class="burger-bar"></div>
+        </div>
+
+        <div class="mobile-menu hidden-lg hidden-xl">
+            <div class="container">
+                <nav class="mobile-nav">
+                    {{ partial "navigation.html" . }}
+                </nav>
+            </div>
+        </div>
+    {{ end }}
+</header>

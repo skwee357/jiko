@@ -1,0 +1,71 @@
+.cover {
+    margin-top: 4.5rem;
+}
+
+.cover-content {
+    align-items: center;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.cover-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.cover-icon {
+    position: relative;
+    margin: 2rem;
+}
+
+.cover-icon-image {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.cover-author {
+    text-align: left;
+    margin-top: 32px;
+}
+
+.cover-author h2 {
+    margin-bottom: 2px;
+}
+
+.cover-author h4 {
+    font-size: 1.4rem;
+}
+
+.cover-icon-image.white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.cover-description {
+    font-size: 1.7rem;
+}
+
+.cover-social {
+    margin-top: 10px;
+}
+
+.cover-social .social-item {
+    margin: 0 4px;
+    color: var(--secondary-text-color);
+    line-height: 0;
+}
+
+.cover-social .social-item .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.cover-announcement {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--light-gray-color);
+}

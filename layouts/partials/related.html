@@ -1,0 +1,15 @@
+{{ if eq .Section "post" }}
+    {{ $related := .Site.RegularPages.Related . | first 3 }}
+    {{ with $related }}
+        <section class="related-wrapper">
+            <div class="container medium">
+                <h3 class="related-title">You might also like...</h3>
+                <div class="related-feed">
+                    {{ range . }}
+                        {{ partial "post-summary-short" . }}
+                    {{ end }}
+                </div>
+            </div>
+        </section>
+    {{ end }}
+{{ end }}
