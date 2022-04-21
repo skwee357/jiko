@@ -16,7 +16,7 @@
 		{{ $stylesheet = $stylesheet | append $custom }}
 	{{ end }}
 
-    {{ $stylesheet := (slice $blog $general $misc $site $custom) | resources.Concat "assets/css/stylesheet.css" | minify }}
+    {{ $stylesheet := (slice $blog $general $misc $site) | resources.Concat "assets/css/stylesheet.css" | minify }}
     {{ $stylesheet := $stylesheet | fingerprint }}
 
 	<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
