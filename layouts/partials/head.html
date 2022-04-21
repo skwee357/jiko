@@ -11,13 +11,12 @@
 
     {{ $stylesheet := (slice $blog $general $misc $site)}}
 
-	{{ with resources.GetMatch "css/custom/*.css" }}
-	    {{ $custom := resources.Match "css/custom/*.css" | resources.Concat "assets/css/custom.css" }}
+	{{ with resources.Match "css/custom/*.css" }}
+	    {{ $custom := . | resources.Concat "assets/css/custom.css" }}
 		{{ $stylesheet = $stylesheet | append $custom }}
 	{{ end }}
 
-    {{ $stylesheet := $stylesheet | resources.Concat "assets/css/stylesheet.css" | minify }}
-    {{ $stylesheet := $stylesheet | fingerprint }}
+    {{ $stylesheet := $stylesheet | resources.Concat "assets/css/stylesheet.css" | minify | fingerprint }}
 
 	<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
 
