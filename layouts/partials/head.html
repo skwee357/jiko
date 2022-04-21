@@ -12,7 +12,7 @@
     {{ $stylesheet := (slice $blog $general $misc $site)}}
 
 	{{ with resources.GetMatch "css/custom/*.css" }}
-	    {{ $custom := . | resources.Concat "assets/css/custom.css" }}
+	    {{ $custom := .Content | resources.Concat "assets/css/custom.css" }}
 		{{ $stylesheet := $stylesheet | append $custom }}
 	{{ end }}
 
