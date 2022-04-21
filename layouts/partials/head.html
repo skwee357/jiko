@@ -8,7 +8,13 @@
     {{ $general := (resources.Match "css/general/*.css") | resources.Concat "assets/css/general.css" }}
     {{ $misc := (resources.Match "css/misc/*.css") | resources.Concat "assets/css/misc.css" }}
     {{ $site := (resources.Match "css/site/*.css") | resources.Concat "assets/css/site.css" }}
-    {{ $custom := (resources.Match "css/custom/*.css") | resources.Concat "assets/css/custom.css" }}
+
+    {{ $stylesheet := (slice $blog $general $misc $site)}}
+
+	{{ with resources.GetMatch "css/custom/*.css" }}
+	    {{ $custom := . | resources.Concat "assets/css/custom.css" }}
+		{{ $stylesheet = $stylesheet | append $custom }}
+	{{ end }}
 
     {{ $stylesheet := (slice $blog $general $misc $site $custom) | resources.Concat "assets/css/stylesheet.css" | minify }}
     {{ $stylesheet := $stylesheet | fingerprint }}
