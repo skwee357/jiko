@@ -1,8 +1,0 @@
-{{ $name := .Get "name" }}
-{{ $title := .Get "title" }}
-{{ with ($.Page.Param "about") }}
-	{{ $social := index (where .email "name" $name) 0 }}
-	{{- with $social -}}
-		<a href="mailto:{{ .address }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">{{ $title }}</a>
-	{{- end -}}
-{{ end }}

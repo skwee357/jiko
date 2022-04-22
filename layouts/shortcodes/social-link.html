@@ -1,8 +1,13 @@
+{{ $urls := (dict "twitter" "https://twitter.com/{u}" "linkedin" "https://linkedin/in/{u}" "github" "https://github.com/{u}" "medium" "https://medium.com/@{u}" "stackoverflow" "https://stackoverflow.com/users/{u}" "email" "mailto:{u}")}}
+
 {{ $name := .Get "name" }}
 {{ $title := .Get "title" }}
-{{ with ($.Page.Param "about") }}
-	{{ $social := index (where .social "name" $name) 0 }}
-	{{- with $social -}}
-		<a href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">{{ $title }}</a>
+
+{{ with site.Social }}
+	{{- if isset . $name -}}
+		{{ $u := index . $name }}
+		{{ $url := index $urls $name }}
+		<a href="{{ replace $url "{u}" $u }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">{{ $title }}</a>
 	{{- end -}}
 {{ end }}
+

@@ -50,24 +50,12 @@ Tags can be added using the `tags: ["TagA", "TagB"]` frontmatter attribute
 ## Supported Shortcodes
 There are two supported shortcodes: `email-link` and `social-link`. 
 
-### email-link
-`email-link` allows you to insert links to different email addresses throughout your blog. In order to define different email address you need to add the following section to your `config.toml`:
-
-```toml
-[[params.about.email]]
-name = "email_name"
-address = "me@example.com"
-```
-
-Then in order to render this email in your post / page, use the following call `{{< email-link name="email_name" title="My Email" >}}` which will render as `<a href="mailto:me@example.com" target="_blank" rel="noopener noreferrer" aria-label="email_name">My Email</a>`.
-
 ### social-link
-`social-link` works similar to `email-link`. In order to define links to your social platforms, add the following to your `config.toml`:
+`social-link` gives you the ability to insert link to your social profiles. In order to define links to your social platforms, add the following to your `config.toml`:
 
 ```toml
-[[params.about.social]]
-name = "twitter"
-url = "https://twitter.com/me"
+[social]
+twitter = "me"
 ```
 
 And then you can use `{{< social-link name="twitter" title="Twitter" >}}` which will render as `<a href="https://twitter.com/me" target="_blank" rel="noopener noreferrer" aria-label="twitter">Twitter</a>`
