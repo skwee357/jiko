@@ -18,6 +18,11 @@
 
     {{ $stylesheet := $stylesheet | resources.Concat "assets/css/stylesheet.css" | minify | fingerprint }}
 
+	<style>
+		:root {
+			--accent-color: {{ .Site.Params.accentColor }}
+		}
+	</style>
 	<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
