@@ -1,4 +1,5 @@
 {{ $share_url := .Permalink | safeURL }}
+{{ $title := .Title | safeURL }}
 
 {{with .Site.Params.share }}
     <section>
@@ -13,7 +14,7 @@
             {{ end }}
 
             {{ if in . "twitter" }}
-            <a class="share-item share-twitter u-hover-item" href="https://twitter.com/intent/tweet?url={{ $share_url }}&text={{ .Title }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+            <a class="share-item share-twitter u-hover-item" href="https://twitter.com/intent/tweet?url={{ $share_url }}&text={{ $title }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
                 <svg class="share-icon icon-twitter">
                     {{ partial "icons/twitter" }}
                 </svg>
@@ -21,7 +22,7 @@
             {{ end }}
 
             {{ if in . "linkedin" }}
-            <a class="share-item share-linkedin u-hover-item" href="https://www.linkedin.com/shareArticle?mini=true&url={{ $share_url }}&title={{ .Title }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+            <a class="share-item share-linkedin u-hover-item" href="https://www.linkedin.com/shareArticle?mini=true&url={{ $share_url }}&title={{ $title }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
                 <svg class="share-icon icon-linkedin">
                     {{ partial "icons/linkedin" }}
                 </svg>
@@ -29,7 +30,7 @@
             {{ end }}
 
             {{ if in . "reddit" }}
-            <a class="share-item share-reddit u-hover-item" href="https://reddit.com/submit?url={{ $share_url }}&title={{ .Title }}" target="_blank" rel="noopener" aria-label="Share on Reddit">
+            <a class="share-item share-reddit u-hover-item" href="https://reddit.com/submit?url={{ $share_url }}&title={{ $title }}" target="_blank" rel="noopener" aria-label="Share on Reddit">
                 <svg class="share-icon icon-reddit">
                     {{ partial "icons/reddit" }}
                 </svg>
@@ -50,7 +51,7 @@
                     {{ partial "icons/ycombinator" }}
                 </svg>
             </a>
-            {{ end }}
+            {{}}
         </div>
     </section>
 {{ end }}
