@@ -1,3 +1,5 @@
+const THEME_KEY = "jiko_theme";
+
 (function() {
 	burger();
 	theme();
@@ -13,8 +15,6 @@ function burger() {
 		}
 	});
 }
-
-const THEME_KEY = "jiko_theme";
 
 function theme() {
 	const html = document.documentElement;
