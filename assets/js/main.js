@@ -14,6 +14,8 @@ function burger() {
 	});
 }
 
+const THEME_KEY = "jiko_theme";
+
 function theme() {
 	const html = document.documentElement;
     const toggle = document.getElementById('js-theme');
@@ -22,25 +24,25 @@ function theme() {
     function system() {
     	html.classList.remove("theme-dark");
     	html.classList.remove("theme-light");
-        localStorage.removeItem('yieldcode_theme');
+        localStorage.removeItem(THEME_KEY);
         toggleText.textContent = toggle.getAttribute('data-system');
     }
 
     function dark() {
         html.classList.add("theme-dark");
     	html.classList.remove("theme-light");
-        localStorage.setItem('yieldcode_theme', 'dark');
+        localStorage.setItem(THEME_KEY, 'dark');
         toggleText.textContent = toggle.getAttribute('data-dark');
     }
 
     function light() {
         html.classList.remove("theme-dark");
     	html.classList.add("theme-light");
-        localStorage.setItem('yieldcode_theme', 'light');
+        localStorage.setItem(THEME_KEY, 'light');
         toggleText.textContent = toggle.getAttribute('data-light');
     }
 
-    switch (localStorage.getItem('yieldcode_theme')) {
+    switch (localStorage.getItem(THEME_KEY) || DEFAULT_COLOR_SCHEME) {
         case 'dark':
             dark();
             break;

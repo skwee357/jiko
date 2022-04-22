@@ -102,16 +102,6 @@
 	{{ end }}
 
 	<script>
-        var localTheme = localStorage.getItem('yieldcode_theme');
-        switch (localTheme) {
-            case 'dark':
-                document.documentElement.classList.add('theme-dark');
-                break;
-            case 'light':
-                document.documentElement.classList.add('theme-light');
-                break;
-            default:
-                break;
-        }
+		const DEFAULT_COLOR_SCHEME = "{{ .Site.Params.colorScheme | default 'system' }}";
     </script>
 </head>
