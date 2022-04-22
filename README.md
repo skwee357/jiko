@@ -48,7 +48,7 @@ By adding `keywords: ["a", "b", "c"]` you can add a `meta` tag of `keywords` on 
 Tags can be added using the `tags: ["TagA", "TagB"]` frontmatter attribute
 
 ## Supported Shortcodes
-There are two supported shortcodes: `email-link` and `social-link`. 
+There is one supported shortcode: `social-link`. 
 
 ### social-link
 `social-link` gives you the ability to insert link to your social profiles. In order to define links to your social platforms, add the following to your `config.toml`:
