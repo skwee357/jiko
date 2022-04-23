@@ -39,14 +39,16 @@
                 <h4 class="single-footer-title">Published by</h4>
 
                 <div class="author">
-                    <div class="author-image-placeholder u-placeholder">
-                        {{ $image := resources.Get .Site.Params.About.cover }}
-                        {{ $img := $image.Resize "200x webp" }}
+                    {{ with resources.Get .Site.Params.About.cover }}
+                        <div class="author-image-placeholder u-placeholder">
+                            {{ $image := . }}
+                            {{ $img := $image.Resize "200x webp" }}
 
-                        <a href="/about-me" alt="About {{ .Site.Params.author }}">
-                            <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ .Site.Params.author }}">
-                        </a>
-                    </div>
+                            <a href="/about-me" alt="About {{ .Site.Params.author }}">
+                                <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ .Site.Params.author }}">
+                            </a>
+                        </div>
+                    {{ end }}
 
                     <div class="author-wrapper">
                         <header class="author-header">
