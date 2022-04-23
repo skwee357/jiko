@@ -39,9 +39,9 @@
                 <h4 class="single-footer-title">Published by</h4>
 
                 <div class="author">
-                    {{ with resources.Get .Site.Params.About.cover }}
+                    {{ with .Site.Params.About.cover }}
                         <div class="author-image-placeholder u-placeholder">
-                            {{ $image := . }}
+                            {{ $image := resources.Get . }}
                             {{ $img := $image.Resize "200x webp" }}
 
                             <a href="/about-me" alt="About {{ .Site.Params.author }}">
