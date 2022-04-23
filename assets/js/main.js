@@ -58,15 +58,17 @@ function theme() {
             break;
     }
 
-    toggle.addEventListener("click", function(e) {
-        e.preventDefault();
+    if (toggle) {
+        toggle.addEventListener("click", function(e) {
+            e.preventDefault();
 
-        if (!html.classList.contains('theme-dark') && !html.classList.contains('theme-light')) {
-            dark();
-        } else if (html.classList.contains('theme-dark')) {
-            light();
-        } else {
-            system();
-        }
-    });
+            if (!html.classList.contains('theme-dark') && !html.classList.contains('theme-light')) {
+                dark();
+            } else if (html.classList.contains('theme-dark')) {
+                light();
+            } else {
+                system();
+            }
+        });
+    }
 }
