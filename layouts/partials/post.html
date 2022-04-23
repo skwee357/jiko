@@ -44,7 +44,7 @@
                             {{ $image := resources.Get . }}
                             {{ $img := $image.Resize "200x webp" }}
 
-                            <a href="/about-me" alt="About {{ .Site.Params.author }}">
+                            <a href="/about-me" alt="About {{ site.Params.author }}">
                                 <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ .Site.Params.author }}">
                             </a>
                         </div>
