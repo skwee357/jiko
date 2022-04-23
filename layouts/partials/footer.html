@@ -39,7 +39,9 @@
         {{ end }}
     </nav>
 
+    {{ with .GitInfo }}
     <div class="build-number">
-        Build {{ .GitInfo.AbbreviatedHash }}
+        Build {{ .AbbreviatedHash }}
     </div>
+    {{ end }}
 </footer>
