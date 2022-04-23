@@ -19,25 +19,33 @@ function theme() {
     const toggle = document.getElementById('js-theme');
     const toggleText = toggle.getElementsByClassName('theme-text')[0];
 
+    function changeToggleText(t) {
+        const toggle = document.getElementById('js-theme');
+        if (toggle) {
+            const toggleText = toggle.getElementsByClassName('theme-text')[0];
+            toggleText.textContent = toggle.getAttribute(t);
+        }
+    }
+
     function system() {
     	html.classList.remove("theme-dark");
     	html.classList.remove("theme-light");
         localStorage.removeItem(THEME_KEY);
-        toggleText.textContent = toggle.getAttribute('data-system');
+        changeToggleText('data-system');
     }
 
     function dark() {
         html.classList.add("theme-dark");
     	html.classList.remove("theme-light");
         localStorage.setItem(THEME_KEY, 'dark');
-        toggleText.textContent = toggle.getAttribute('data-dark');
+        changeToggleText('data-dark');
     }
 
     function light() {
         html.classList.remove("theme-dark");
     	html.classList.add("theme-light");
         localStorage.setItem(THEME_KEY, 'light');
-        toggleText.textContent = toggle.getAttribute('data-light');
+        changeToggleText('data-light');
     }
 
     switch (localStorage.getItem(THEME_KEY) || DEFAULT_COLOR_SCHEME) {
