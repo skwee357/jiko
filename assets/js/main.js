@@ -1,26 +1,24 @@
 (function() {
-	burger();
-	theme();
+    burger();
+    theme();
 })();
 
 function burger() {
-	const elem = document.body;
-	document.getElementById('burger').addEventListener("click", function() {
-		if(elem.classList.contains("menu-opened")) {
-			elem.classList.remove("menu-opened");
-		} else {
-			elem.classList.add("menu-opened");
-		}
-	});
+    const elem = document.body;
+    document.getElementById('burger').addEventListener("click", function() {
+        if(elem.classList.contains("menu-opened")) {
+            elem.classList.remove("menu-opened");
+        } else {
+            elem.classList.add("menu-opened");
+        }
+    });
 }
 
 function theme() {
-	const html = document.documentElement;
+    const html = document.documentElement;
     const toggle = document.getElementById('js-theme');
-    const toggleText = toggle.getElementsByClassName('theme-text')[0];
 
     function changeToggleText(t) {
-        const toggle = document.getElementById('js-theme');
         if (toggle) {
             const toggleText = toggle.getElementsByClassName('theme-text')[0];
             toggleText.textContent = toggle.getAttribute(t);
@@ -28,22 +26,22 @@ function theme() {
     }
 
     function system() {
-    	html.classList.remove("theme-dark");
-    	html.classList.remove("theme-light");
+        html.classList.remove("theme-dark");
+        html.classList.remove("theme-light");
         localStorage.removeItem(THEME_KEY);
         changeToggleText('data-system');
     }
 
     function dark() {
         html.classList.add("theme-dark");
-    	html.classList.remove("theme-light");
+        html.classList.remove("theme-light");
         localStorage.setItem(THEME_KEY, 'dark');
         changeToggleText('data-dark');
     }
 
     function light() {
         html.classList.remove("theme-dark");
-    	html.classList.add("theme-light");
+        html.classList.add("theme-light");
         localStorage.setItem(THEME_KEY, 'light');
         changeToggleText('data-light');
     }
