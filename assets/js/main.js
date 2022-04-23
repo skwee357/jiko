@@ -1,5 +1,3 @@
-const THEME_KEY = "jiko_theme";
-
 (function() {
 	burger();
 	theme();

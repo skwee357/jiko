@@ -66,6 +66,10 @@
     opacity: 1;
 }
 
+.build-number {
+    color: var(--mid-gray-color)
+}
+
 .theme-icon, .rss-icon {
     width: 1.1rem;
     height: 1.1rem;
