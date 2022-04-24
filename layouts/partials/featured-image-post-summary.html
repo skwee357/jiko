@@ -12,10 +12,10 @@
 
         <img class="u-object-fit"
             srcset="
-            {{- with $tiny.RelPermalink -}}{{.}} 200w{{- end -}}
-            {{- with $small.RelPermalink -}}, {{.}} 300w{{- end -}}
-            {{- with $medium.RelPermalink -}}, {{.}} 600w{{- end -}}
-            {{- with $large.RelPermalink -}}, {{.}} 1200w{{- end -}}
+            {{- with $tiny.RelPermalink -}}{{.}} 500w{{- end -}}
+            {{- with $small.RelPermalink -}}, {{.}} 800w{{- end -}}
+            {{- with $medium.RelPermalink -}}, {{.}} 1200w{{- end -}}
+            {{- with $large.RelPermalink -}}, {{.}} 1500w{{- end -}}
             "
             sizes="(min-width: 576px) 160px, 90vw"
             src="{{ $src.RelPermalink }}"

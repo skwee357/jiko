@@ -1,7 +1,7 @@
-{{ $tinyw := default "200x webp" }}
-{{ $smallw := default "300x webp" }}
-{{ $mediumw := default "600x webp" }}
-{{ $largew := default "1200x webp" }}
+{{ $tinyw := default "500x webp" }}
+{{ $smallw := default "800x webp" }}
+{{ $mediumw := default "1200x webp" }}
+{{ $largew := default "1500x webp" }}
 
 {{ $data := .scratch }}
 {{ $data.Set "tiny" (.src.Resize $tinyw) }}
