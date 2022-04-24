@@ -74,11 +74,13 @@
 			<meta property="twitter:image" content="{{ .Permalink }}">
 		{{ else }}
 			{{ with ($.Param "about") }}
-				{{ $image := resources.Get .cover }}
-            	{{ $img := $image.Resize "400x webp" }}
+				{{ with .cover }}
+					{{ $image := resources.Get .}}
+					{{ $img := $image.Resize "400x webp" }}
 
-				<meta property="og:image" content="{{ $img.Permalink }}">
-				<meta property="twitter:image" content="{{ $img.Permalink }}">
+					<meta property="og:image" content="{{ $img.Permalink }}">
+					<meta property="twitter:image" content="{{ $img.Permalink }}">
+				{{ end }}
 			{{ end }}
 		{{ end }}
 
