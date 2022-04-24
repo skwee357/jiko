@@ -5,10 +5,10 @@
         {{ $s := newScratch }}
         {{ partial "featured-image" (dict "scratch" $s "src" $src )}}
 
-        {{ $tiny := $data.Get "tiny" }}
-        {{ $small := $data.Get "small" }}
-        {{ $medium := $data.Get "medium" }}
-        {{ $large := $data.Get "large" }}
+        {{ $tiny := $s.Get "tiny" }}
+        {{ $small := $s.Get "small" }}
+        {{ $medium := $s.Get "medium" }}
+        {{ $large := $s.Get "large" }}
 
         <img class="u-object-fit"
             srcset="
