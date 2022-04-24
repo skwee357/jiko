@@ -1,0 +1,24 @@
+{{ with ($.Param "featured_image") }}
+    {{ $src := $.Page.Resources.GetMatch . }}
+
+    {{ if $src }}
+        {{ $s := newScratch }}
+        {{ partial "featured-image" (dict "scratch" $s "src" $src )}}
+
+        {{ $tiny := $data.Get "tiny" }}
+        {{ $small := $data.Get "small" }}
+        {{ $medium := $data.Get "medium" }}
+        {{ $large := $data.Get "large" }}
+
+        <img class="u-object-fit"
+            srcset="
+            {{- with $tiny.RelPermalink -}}{{.}} 200w{{- end -}}
+            {{- with $small.RelPermalink -}}, {{.}} 300w{{- end -}}
+            {{- with $medium.RelPermalink -}}, {{.}} 600w{{- end -}}
+            {{- with $large.RelPermalink -}}, {{.}} 1200w{{- end -}}
+            "
+            sizes="(min-width: 576px) 160px, 90vw"
+            src="{{ $src.RelPermalink }}"
+            alt="{{ $.Title }}">
+    {{ end }}
+{{ end }}
