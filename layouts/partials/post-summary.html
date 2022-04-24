@@ -1,7 +1,9 @@
 <article class="feed post">
-    <div class="feed-image u-placeholder rectangle">
-        {{ partial "featured-image-post-summary" . }}
-    </div>
+    {{ if (site.Params.showFeedImage | default false) }}
+        <div class="feed-image u-placeholder rectangle">
+            {{ partial "featured-image-post-summary" . }}
+        </div>
+    {{ end }}
     <div class="feed-wrapper">
         <h2 class="feed-title">{{ .Title }}</h2>
         {{ with .Summary }}
