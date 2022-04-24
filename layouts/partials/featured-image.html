@@ -1,3 +1,5 @@
+{{ $isFeed := eq $.displayMode "feed" }}
+
 {{ with ($.Param "featured_image") }}
     {{ $parts := split . "#" }}
     {{ $destination := index $parts 0 }}
@@ -23,19 +25,32 @@
     	{{ $medium := $data.Get "medium" }}
     	{{ $large := $data.Get "large" }}
 
-    	<figure class="single-media kg-width-wide">
-    		<a href="{{ $src.RelPermalink }}">
-    		    <picture>
-    			    <source media="(max-width: 376px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
-    			    <source media="(max-width: 992px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
-    			    <source media="(max-width: 1400px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
-    			    <source media="(min-width: 1600px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
-    			    <img {{ with ($.Param "featured_image_alt") }}alt="{{ . | safeHTML }}"{{ end }} src="{{ $src }}" height="{{ $src.Height}}" width="{{ $src.Width }}" {{ with $class }}class="{{ . }}"{{ end }}>
-    			</picture>
-    		</a>
-    		{{ with ($.Param "featured_image_caption") }}
-    			<figcaption>{{ . | safeHTML | markdownify }}</figcaption>
-    		{{ end }}
-    	</figure>
+        {{ if $isFeed }}
+        <img class="u-object-fit"
+            srcset="
+            {{- with $tiny.RelPermalink -}}{{.}} 200w{{- end -}}
+            {{- with $small.RelPermalink -}}, {{.}} 300w{{- end -}}
+            {{- with $medium.RelPermalink -}}, {{.}} 600w{{- end -}}
+            {{- with $large.RelPermalink -}}, {{.}} 1200w{{- end -}}
+            "
+            sizes="(min-width: 576px) 160px, 90vw"
+            src="{{ $src.RelPermalink }}"
+            alt="{{ $.Title }}">
+        {{ else }}
+            <figure class="single-media kg-width-wide">
+                <a href="{{ $src.RelPermalink }}">
+                    <picture>
+                        <source media="(max-width: 376px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+                        <source media="(max-width: 992px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+                        <source media="(max-width: 1400px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+                        <source media="(min-width: 1600px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+                        <img {{ with ($.Param "featured_image_alt") }}alt="{{ . | safeHTML }}"{{ end }} src="{{ $src }}" height="{{ $src.Height}}" width="{{ $src.Width }}" {{ with $class }}class="{{ . }}"{{ end }}>
+                    </picture>
+                </a>
+                {{ with ($.Param "featured_image_caption") }}
+                    <figcaption>{{ . | safeHTML | markdownify }}</figcaption>
+                {{ end }}
+            </figure>
+        {{ end }}
     {{ end }}
 {{ end }}
