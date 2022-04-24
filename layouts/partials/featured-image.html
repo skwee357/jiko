@@ -1,4 +1,9 @@
-{{ $isFeed := eq $.displayMode "feed" }}
+{{ with $.displayMode }}
+    {{ $displayMode := $.displayMode }}
+{{ else }}
+    {{ $displayMode := "post" }}
+{{ end }}
+{{ $isFeed := eq $displayMode "feed" }}
 
 {{ with ($.Param "featured_image") }}
     {{ $parts := split . "#" }}
