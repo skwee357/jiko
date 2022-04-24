@@ -18,7 +18,8 @@ colorSchemeSwitcher = true # boolean, default true. Whether to show the color sc
 accentColor = "#ff00cc" # the accent color of the website
 cloudflareWebAnalytics = "abcdef1234567890" # CloudFlare anayltics code. Will be rendered only in production mode
 share = ["facebook", "twitter", "linkedin", "reddit", "pocket", "ycombinator"] # list of paltforms to share post at. leave empty to disable
-showFeedImage = false # wether to show featured images in the feed view
+showFeedImage = false # whether to show featured images in the feed view (default to false)
+showAuthor = true # whether to show the author under each post (default to true)
 
 [params.plausibleAnalytics]
 domain = "mysite.com" # the domain for plausible analytics

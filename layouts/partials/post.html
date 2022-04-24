@@ -35,41 +35,43 @@
         <footer class="single-footer container small">
             {{ partial "share" . }}
 
-            <section class="published-by">
-                <h4 class="single-footer-title">Published by</h4>
+            {{ if (site.Params.showAuthor | default true) }}
+                <section class="published-by">
+                    <h4 class="single-footer-title">Published by</h4>
 
-                <div class="author">
-                    {{ $author := .Site.Params.author }}
-                    {{ with .Site.Params.About.cover }}
-                        <div class="author-image-placeholder u-placeholder">
-                            {{ $image := resources.Get . }}
-                            {{ $img := $image.Resize "200x webp" }}
+                    <div class="author">
+                        {{ $author := .Site.Params.author }}
+                        {{ with .Site.Params.About.cover }}
+                            <div class="author-image-placeholder u-placeholder">
+                                {{ $image := resources.Get . }}
+                                {{ $img := $image.Resize "200x webp" }}
 
-                            <a href="/about-me" alt="About {{ $author }}">
-                                <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ $author }}">
-                            </a>
-                        </div>
-                    {{ end }}
-
-                    <div class="author-wrapper">
-                        <header class="author-header">
-                            <h4 class="author-name">
                                 <a href="/about-me" alt="About {{ $author }}">
-                                    {{ $author }}
+                                    <img class="author-image u-object-fit lazyloaded" width="150" height="150" src="{{ $img.RelPermalink }}" alt="{{ $author }}">
                                 </a>
-                            </h4>
+                            </div>
+                        {{ end }}
 
-                            <h5 class="author-title">
-                                {{ $.Param "about.title" }}
-                            </h5>
-                        </header>
+                        <div class="author-wrapper">
+                            <header class="author-header">
+                                <h4 class="author-name">
+                                    <a href="/about-me" alt="About {{ $author }}">
+                                        {{ $author }}
+                                    </a>
+                                </h4>
 
-                        <div class="author-bio">
-                            {{ partial "author-bio" ($.Param "about")}}
+                                <h5 class="author-title">
+                                    {{ $.Param "about.title" }}
+                                </h5>
+                            </header>
+
+                            <div class="author-bio">
+                                {{ partial "author-bio" ($.Param "about")}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            {{ end }}
 
             {{ partial "post-footer" . }}
         </footer>
