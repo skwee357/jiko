@@ -67,7 +67,8 @@
 }
 
 .build-number {
-    color: var(--mid-gray-color)
+    color: var(--mid-gray-color);
+    font-size: 1.0rem;
 }
 
 .theme-icon, .rss-icon {
