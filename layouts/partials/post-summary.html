@@ -5,7 +5,7 @@
             <div class="feed-excerpt">{{ . | plainify | safeHTML }}</div>
         {{ end }}
         <div class="feed-image u-placeholder rectangle">
-            {{ partial "featured-image" merge . dict "displayMode" "feed" }}
+            {{ partial "featured-image" . }}
         </div>
         <div class="feed-right">
             <time class="feed-date" datetime="{{ .Date.Format "2006-01-02" }}">
